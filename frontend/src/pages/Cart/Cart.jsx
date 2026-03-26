@@ -31,7 +31,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/item/list').then(res => {
+    axios.get('https://autoscrapx-backend.onrender.com/api/item/list').then(res => {
       if (res.data.success && Array.isArray(res.data.data)) {
         setAdminItems(res.data.data);
       }
@@ -55,7 +55,7 @@ const Cart = () => {
         itemsArr.push({
           ...admin,
           quantity: cartItems[admin._id],
-          image: `http://localhost:4000/uploads/${admin.image}`,
+          image: `https://autoscrapx-backend.onrender.com/uploads/${admin.image}`,
           source: 'admin'
         });
       }
@@ -99,7 +99,7 @@ const Cart = () => {
   // ---- Razorpay Online Payment ----
   const handleCheckout = async () => {
     try {
-      const { data } = await axios.post('http://localhost:4000/api/payment/orders', {
+      const { data } = await axios.post('https://autoscrapx-backend.onrender.com/api/payment/orders', {
         amount: grandTotal
       });
       const { order } = data;
@@ -112,13 +112,13 @@ const Cart = () => {
         name: "AutoScrapX",
         handler: async function (response) {
           try {
-            const verifyRes = await axios.post('http://localhost:4000/api/payment/verify', {
+            const verifyRes = await axios.post('https://autoscrapx-backend.onrender.com/api/payment/verify', {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,
               razorpay_signature: response.razorpay_signature
             });
             if (verifyRes.data.status === "success") {
-              const orderRes = await axios.post('http://localhost:4000/api/orders/create', {
+              const orderRes = await axios.post('https://autoscrapx-backend.onrender.com/api/orders/create', {
                 userId: userId || "demo-user-123",
                 items: cartProducts.map(item => ({
                   id: item._id || item.id,
@@ -168,7 +168,7 @@ const Cart = () => {
   // ---- COD Payment ----
   const handleCOD = async () => {
     try {
-      const orderRes = await axios.post('http://localhost:4000/api/orders/create', {
+      const orderRes = await axios.post('https://autoscrapx-backend.onrender.com/api/orders/create', {
         userId: userId || "demo-user-123",
         items: cartProducts.map(item => ({
           id: item._id || item.id,

@@ -8,7 +8,7 @@ const ItemDisplay = ({ category }) => {
   const [dbItems, setDbItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/item/list')
+    axios.get('https://autoscrapx-backend.onrender.com/api/item/list')
       .then(res => {
         if (res.data.success && Array.isArray(res.data.data)) {
           setDbItems(res.data.data);
@@ -23,7 +23,7 @@ const ItemDisplay = ({ category }) => {
   // For dbItems, we need to construct image URL for images
   const dbItemsWithImages = dbItems.map(item => ({
     ...item,
-    image: `http://localhost:4000/uploads/${item.image}`
+    image: `https://autoscrapx-backend.onrender.com/uploads/${item.image}`
   }));
   
   const allItems = [...product_list, ...dbItemsWithImages];
