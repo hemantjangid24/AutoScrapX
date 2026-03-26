@@ -23,7 +23,7 @@ const allowedOrigins = [
   'http://localhost:5173', // Local React (Vite)
   'http://localhost:5174', // Local Admin (if different port)
   'https://autoscrapx.vercel.app', // Your future Vercel Frontend
-  'https://autoscrapx-admin.vercel.app'     // Your future Vercel Admin
+  'https://admin-autoscrapx.vercel.app'     // Your future Vercel Admin
 ];
 
 app.use(cors({
