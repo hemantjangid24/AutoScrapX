@@ -6,11 +6,11 @@ const Header = () => {
     <div className='header'>
         <div className="header-contents">
             <h2>Quality Auto Parts at Scrap Prices</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique dolorem, dicta itaque iure fugiat architecto.</p>
+            <p>Join the future of eco-friendly car maintenance by sourcing high-quality, tested scrap parts at a fraction of the original cost.</p>
             <button>View Menu</button>
         </div>
     </div>
   )
-}
+} 
 
 export default Header
